@@ -4,7 +4,7 @@ import { Shape } from "./shapes";
 import {
   get_rotation,
   seconds,
-  position,
+  cr,
   randint,
   text_wrap,
 } from  "@olehermanse/utils/funcs.js";
@@ -40,8 +40,8 @@ class Game {
     this.money = 45;
     this.rows = rows;
     this.columns = columns;
-    this.spawn = position(0, randint(1, this.rows - 2));
-    this.goal = position(columns - 1, randint(1, this.rows - 2));
+    this.spawn = cr(0, randint(1, this.rows - 2));
+    this.goal = cr(columns - 1, randint(1, this.rows - 2));
     this.towers = [];
     this.enemies = [];
     this.delay = 0;
@@ -94,7 +94,7 @@ class Game {
       let shape = Shape.get_shape();
       let h = shape.r;
       let w = shape.c;
-      let p = position(
+      let p = cr(
         randint(2, this.columns - 2 - w),
         randint(2, this.rows - 2 - h)
       );
@@ -157,7 +157,7 @@ class Game {
     for (let c = 0; c < this.columns; ++c) {
       for (let r = 0; r < this.rows; ++r) {
         if (this.is_empty(c, r) && !this.is_path(c, r)) {
-          return position(c, r);
+          return cr(c, r);
         }
       }
     }
@@ -251,16 +251,16 @@ class Game {
 
   find_path(start_c: number, start_r: number) {
     const PI = Math.PI;
-    const target = position(this.goal.c - 1, this.goal.r);
+    const target = cr(this.goal.c - 1, this.goal.r);
     let visited = [];
-    let current = position(start_c, start_r);
+    let current = cr(start_c, start_r);
     while (true) {
       const c = current.c;
       const r = current.r;
-      const up = position(c, r - 1);
-      const down = position(c, r + 1);
-      const left = position(c - 1, r);
-      const right = position(c + 1, r);
+      const up = cr(c, r - 1);
+      const down = cr(c, r + 1);
+      const left = cr(c - 1, r);
+      const right = cr(c + 1, r);
       const direction = get_rotation(current, target);
       let all = [];
       if (direction <= 0) {
@@ -310,7 +310,7 @@ class Game {
     if (path.length === 0) {
       return false;
     }
-    this.set_path([this.spawn, ...path, goal, position(goal.c + 1, goal.r)]);
+    this.set_path([this.spawn, ...path, goal, cr(goal.c + 1, goal.r)]);
     return true;
   }
 
@@ -351,7 +351,7 @@ class Game {
     let name = card === "Rock" ? "Rock" : card.name;
     if (!this.spawning) {
       console.assert(
-        this.can_afford(name, position(c, r)),
+        this.can_afford(name, cr(c, r)),
         "Cannot afford tower"
       );
     }
@@ -381,7 +381,7 @@ class Game {
     card = this.find_card(card);
     let name = this.spawning ? "Rock" : card.name;
     if (!this.spawning) {
-      console.assert(this.can_afford(name, position(c, r)));
+      console.assert(this.can_afford(name, cr(c, r)));
       console.assert(this.can_place(c, r, name));
       console.assert(this.have_card(name));
     }
@@ -435,7 +435,7 @@ class Game {
     if (!this.spawning && !this.have_card(name)) {
       return false;
     }
-    if (!this.can_afford(name, position(c, r))) {
+    if (!this.can_afford(name, cr(c, r))) {
       return false;
     }
     if (this.is_outside(c, r)) {

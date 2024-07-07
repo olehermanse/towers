@@ -1,4 +1,4 @@
-import { xy, position, number_string } from "@olehermanse/utils/funcs.js";
+import { xy, cr, number_string } from "@olehermanse/utils/funcs.js";
 import { Game } from "../libtowers/libtowers";
 import { Tower } from "../libtowers/towers";
 import { Draw } from "@olehermanse/utils/draw.js";
@@ -297,7 +297,7 @@ class CanvasManager {
     } else {
       this.preview.r = r;
       this.preview.c = c;
-      this.preview.price = this.game.price(name, position(c, r));
+      this.preview.price = this.game.price(name, cr(c, r));
     }
 
     if (this.game.has_tower(c, r) && this.game.tiles[c][r].name === name) {
