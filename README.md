@@ -1,25 +1,21 @@
 # Towers
 
+A tower defense game in the browser:
+
 https://towers.oleherman.com
 
-## Development server
+## Running locally
 
-Start the development server:
+For development purposes, you can run the app locally using `docker`:
 
-```
-node server.js
-```
-
-For development purposes it defaults to port 3000:
-
-http://127.0.0.1:3000
-
-## Containers
-
-### docker
-
-```
+```bash
 docker build --tag towers . && docker run -it -p 3000:3000 --name towers --rm towers
 ```
 
-http://127.0.0.1:80
+Or podman:
+
+```bash
+docker build --tag towers . && docker run -it -p 3000:3000 --name towers --rm towers
+```
+
+http://127.0.0.1:3000
