@@ -20,7 +20,7 @@ COPY test test
 RUN npm install
 RUN npm run test
 
-FROM denoland/deno:1.34.3 AS run
+FROM denoland/deno:2.2.11 AS run
 WORKDIR /towers
 COPY --from=build /towers/dist/ dist/
 COPY src/ src/
