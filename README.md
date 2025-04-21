@@ -15,7 +15,7 @@ docker build --tag towers . && docker run -it -p 3000:3000 --name towers --rm to
 Or podman:
 
 ```bash
-docker build --tag towers . && docker run -it -p 3000:3000 --name towers --rm towers
+podman build --tag towers . && podman run -it -p 3000:3000 --name towers --rm towers
 ```
 
 http://127.0.0.1:3000
