@@ -1,7 +1,7 @@
 import { xy, cr, number_string } from "@olehermanse/utils/funcs.js";
 import { Game } from "../libtowers/libtowers";
 import { Tower } from "../libtowers/towers";
-import { Draw } from "@olehermanse/utils/draw.js";
+import * as Draw from "@olehermanse/utils/draw.js";
 import { Painter } from "./painter";
 import { UI } from "./ui";
 import { UITooltip } from "../libdraw/ui_elements";

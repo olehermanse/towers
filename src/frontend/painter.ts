@@ -17,7 +17,7 @@ import {
   PURPLE,
   CYAN,
 } from "@olehermanse/utils/colors.js";
-import { Draw } from "@olehermanse/utils/draw.js";
+import * as Draw from "@olehermanse/utils/draw.js";
 
 const CARD_WIDTH = 300;
 const CARD_HEIGHT = 400;
