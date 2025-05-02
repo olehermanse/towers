@@ -1,4 +1,4 @@
-FROM node:22 AS build
+FROM node:22@sha256:a1f1274dadd49738bcd4cf552af43354bb781a7e9e3bc984cfeedc55aba2ddd8 AS build
 WORKDIR /towers
 COPY package-lock.json package.json ./
 RUN npm install --only=prod
@@ -13,14 +13,14 @@ RUN rm -rf dist
 RUN npm run build
 RUN bash add_version.sh
 
-FROM node:22 AS test
+FROM node:22@sha256:a1f1274dadd49738bcd4cf552af43354bb781a7e9e3bc984cfeedc55aba2ddd8 AS test
 WORKDIR /towers
 COPY --from=build /towers /towers
 COPY test test
 RUN npm install
 RUN npm run test
 
-FROM denoland/deno:2.2.11 AS run
+FROM denoland/deno:2.3.1@sha256:c75db9474ed7bfc24a4b0aa946767ee4a84a30034c188ce55078a591477d5f3e AS run
 WORKDIR /towers
 COPY --from=build /towers/dist/ dist/
 COPY src/ src/
