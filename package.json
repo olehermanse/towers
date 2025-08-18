@@ -21,7 +21,7 @@
     "url": "https://github.com/olehermanse/towers/issues"
   },
   "dependencies": {
-    "@olehermanse/utils": "0.1.10",
+    "@olehermanse/utils": "0.1.11",
     "typescript": "^5.9.2",
     "vite": "^7.1.1"
   },
