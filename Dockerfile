@@ -20,7 +20,7 @@ COPY test test
 RUN npm install
 RUN npm run test
 
-FROM docker.io/denoland/deno:2.3.1@sha256:c75db9474ed7bfc24a4b0aa946767ee4a84a30034c188ce55078a591477d5f3e AS run
+FROM docker.io/denoland/deno:2.5.6@sha256:3ea71953ff50e3ff15c377ead1a8521f624e2f43d27713675a8bed7b33f166aa AS run
 WORKDIR /towers
 COPY --from=build /towers/dist/ dist/
 COPY src/ src/
