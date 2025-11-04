@@ -3,6 +3,9 @@
 
 name: npm build and test
 
+permissions:
+  contents: read
+
 on:
   push:
     branches: [main]
