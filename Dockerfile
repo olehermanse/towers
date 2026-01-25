@@ -1,4 +1,4 @@
-FROM docker.io/node:22@sha256:a1f1274dadd49738bcd4cf552af43354bb781a7e9e3bc984cfeedc55aba2ddd8 AS build
+FROM docker.io/node:22.22.0@sha256:cd7bcd2e7a1e6f72052feb023c7f6b722205d3fcab7bbcbd2d1bfdab10b1e935 AS build
 WORKDIR /towers
 COPY package-lock.json package.json ./
 RUN npm install --only=prod
@@ -13,7 +13,7 @@ RUN rm -rf dist
 RUN npm run build
 RUN bash add_version.sh
 
-FROM docker.io/node:22@sha256:a1f1274dadd49738bcd4cf552af43354bb781a7e9e3bc984cfeedc55aba2ddd8 AS test
+FROM docker.io/node:22.22.0@sha256:cd7bcd2e7a1e6f72052feb023c7f6b722205d3fcab7bbcbd2d1bfdab10b1e935 AS test
 WORKDIR /towers
 COPY --from=build /towers /towers
 COPY test test
